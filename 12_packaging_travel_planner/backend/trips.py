@@ -1,4 +1,4 @@
-from connect_to_api import ResRobot
+from backend.connect_to_api import ResRobot
 import pandas as pd
 
 resrobot = ResRobot()
