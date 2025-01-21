@@ -1,6 +1,7 @@
 import streamlit as st
 from backend.connect_to_api import ResRobot
 from plot_maps import TripMap
+from backend.trips import TripPlanner
 
 resrobot = ResRobot()
 
@@ -17,12 +18,19 @@ def reseplanerare():
         try:
             origin_id = resrobot.return_id(depart_station)
             destination_id = resrobot.return_id(destination_station)
+            col1, col2= st.columns([4, 1], gap= "small")
+            with col1:
+                
+                trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
+                trip_map.display_map()
+            with col2:
+                
+                trip_planner = TripPlanner(
+                    origin_id=origin_id, destination_id=destination_id
+                )
+                st.markdown(
+                    f"Antal stopp: {len(trip_planner.next_available_trip())}"
+                )
 
-            trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
-            trip_map.display_map()
-        
         except Exception as err:
             st.markdown(f"Skriv in båda alternativen.")
-        
-            
-        
