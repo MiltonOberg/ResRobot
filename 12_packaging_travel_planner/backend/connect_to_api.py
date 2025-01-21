@@ -34,6 +34,15 @@ class ResRobot:
             # returns None if extId doesn't exist
             if stop_data.get("extId"):
                 print(f"{stop_data['name']:<50} {stop_data['extId']}")
+    
+    def return_id(self, location):
+        url = f"https://api.resrobot.se/v2.1/location.name?input={location}&format=json&accessId={self.API_KEY}"
+        response = requests.get(url)
+        result = response.json()
+        stops= result.get("stopLocationOrCoordLocation")
+        
+        return stops[0]["StopLocation"]["extId"]
+        
 
     def timetable_departure(self, location_id=740015565):
         url = f"https://api.resrobot.se/v2.1/departureBoard?id={location_id}&format=json&accessId={self.API_KEY}"
