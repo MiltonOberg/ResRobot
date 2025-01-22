@@ -28,7 +28,7 @@ class DepaturePlanner(TripPlanner):
        
     def timetable_departure(self, location_id, end_location):
         url = f"https://api.resrobot.se/v2.1/departureBoard?id={location_id}&format=json&accessId={self.API_KEY}"
-        location_id = origin_id
+        location_id = self.origin_id
         end_location = end_location
         response = requests.get(url)
         result = response.json()
@@ -37,9 +37,9 @@ class DepaturePlanner(TripPlanner):
 
     def timetable_arrival(self, location_id, end_location):
         url = f"https://api.resrobot.se/v2.1/arrivalBoard?id={location_id}&format=json&accessId={self.API_KEY}"
-        location_id = origin_id
+        location_id = self.origin_id
         end_location = end_location
-        location_id = destination_id
+        location_id = self.destination_id
         response = requests.get(url)
         result = response.json()
         return result
