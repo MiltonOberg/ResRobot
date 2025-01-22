@@ -31,6 +31,7 @@ def reseplanerare():
                 st.markdown(
                     f"Antal stopp: {len(trip_planner.next_available_trip())}"
                 )
+                st.markdown(f"Tid: {trip_planner.travel_time()}")
 
         except Exception as err:
             st.markdown(f"Skriv in båda alternativen.")
