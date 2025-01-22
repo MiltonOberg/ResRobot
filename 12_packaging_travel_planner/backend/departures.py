@@ -14,31 +14,38 @@ class DepaturePlanner(TripPlanner):
         self.access_id_from_location(self.origin_id)
         self.access_id_from_location(self.destination_id)
         self.trips = resrobot.trips(self.origin_id, self.destination)
-        
         resrobot = ResRobot()
-        origin_id = input("Enter your location: ")
-        destination_id = input("Enter your destination: ") 
         
-    def access_id_from_location(self, location):
+    start_location = input("Enter your location: ")
+    end_destination = input("Enter your destination: ") 
+        
+    def access_id_from_location(self, location, start_location):
         url = f"https://api.resrobot.se/v2.1/location.name?input={location}&format=json&accessId={self.API_KEY}"
+        start_location = start_location
         response = requests.get(url)
         result = response.json()
                             
        
-    def timetable_departure(self, location_id):
+    def timetable_departure(self, location_id, end_location):
         url = f"https://api.resrobot.se/v2.1/departureBoard?id={location_id}&format=json&accessId={self.API_KEY}"
         location_id = origin_id
+        end_location = end_location
         response = requests.get(url)
         result = response.json()
         return result
 
 
-    def timetable_arrival(self, location_id):
+    def timetable_arrival(self, location_id, end_location):
         url = f"https://api.resrobot.se/v2.1/arrivalBoard?id={location_id}&format=json&accessId={self.API_KEY}"
+        location_id = origin_id
+        end_location = end_location
         location_id = destination_id
         response = requests.get(url)
         result = response.json()
         return result
     
     
-    print(destination_id)
+    def next_trip(self):
+        next_trip = self.trips['Trip']
+        return next_trip    
+    
