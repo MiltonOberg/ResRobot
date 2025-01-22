@@ -63,14 +63,28 @@ class TripPlanner:
         depart_time = self.next_available_trip().iloc[0]["depTime"]
         arrival_time = self.next_available_trip().iloc[-1]["arrTime"]
         time_format = "%H:%M:%S"
-
+        # from string to time object to get the diffrence
         datetime_depart = datetime.strptime(depart_time, time_format)
         datetime_arrival = datetime.strptime(arrival_time, time_format)
+        # diffrence
         travel_time = datetime_arrival - datetime_depart
 
-        time = [item for item in str(travel_time).split(":")]
-
-        return "{} timmar {} minuter".format(time[0], time[1])
+        time = []
+        for item in str(travel_time).split(":"):
+            if "day" in item:
+                time.append(int(item.split("day, ")[0]) * -1)
+                time.append(item.split("day, ")[-1])
+            else:
+                time.append(item)
+        # remove seconds
+        time.remove(time[-1])
+        days= ["dag", "dagar"]
+        
+        return (
+            "{} timmar {} minuter".format(*time)
+            if len(time) == 2
+            else "{} dag {} timmar {} minuter".format(*time)
+        )
 
     def next_available_trips_today(self) -> list[pd.DataFrame]:
         """Fetches all available trips today between the origin_id and destination_id
