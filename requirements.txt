@@ -67,7 +67,7 @@ pyparsing==3.2.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2024.2
-pywin32==308
+#pywin32==308
 pyyaml==6.0.2
 pyzmq==26.2.0
 referencing==0.36.1
@@ -87,7 +87,6 @@ threadpoolctl==3.5.0
 toml==0.10.2
 tornado==6.4.2
 traitlets==5.14.3
--e file:///C:/Users/milto/Documents/skola/ResRobot/12_packaging_travel_planner
 typing-extensions==4.12.2
 tzdata==2024.2
 urllib3==2.3.0
