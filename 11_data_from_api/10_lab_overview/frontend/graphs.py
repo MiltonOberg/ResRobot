@@ -1,6 +1,7 @@
-from utils.query_database import QueryDatabase
 import plotly.express as px
-import streamlit as st 
+import streamlit as st
+from utils.query_database import QueryDatabase
+
 
 class ViewsTrend:
     def __init__(self) -> None:
@@ -12,5 +13,5 @@ class ViewsTrend:
         st.markdown("## Antal visningar under senaste månaden")
         st.plotly_chart(fig)
 
-# create more graphs here
 
+# create more graphs here
