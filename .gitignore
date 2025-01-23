@@ -176,3 +176,7 @@ __pycache__/
 .DS_Store
 *.log
 *.tmp
+
+# temp files
+trafiklab.py
+tripmon.py

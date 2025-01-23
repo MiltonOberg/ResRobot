@@ -1,5 +1,5 @@
-
 import duckdb
+
 
 class Database:
     """Database class with connection implemented as context manager"""
@@ -19,7 +19,7 @@ class Database:
     def query(self, query):
         # Use the persistent connection for querying
         return self.connection.execute(query).fetchall()
-    
+
 
 class DatabaseDataFrame(Database):
     def query(self, query):

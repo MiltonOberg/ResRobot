@@ -5,4 +5,3 @@ page_option = {
     "Start sida": home,
     "Reseplanerare": reseplanerare,
 }
-
