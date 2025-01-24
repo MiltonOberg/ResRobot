@@ -1,6 +1,7 @@
 from datetime import datetime
 
 import pandas as pd
+
 from backend.connect_to_api import ResRobot
 
 resrobot = ResRobot()
@@ -84,6 +85,22 @@ class TripPlanner:
             if len(time) == 2
             else "{} dag {} timmar {} minuter".format(*time)
         )
+
+    def changeovers(self):
+        next_trip = self.trips[0]
+        stops = next_trip["LegList"]["Leg"]
+        filtered_names = [
+            stops[i]["name"]
+            for i in range(len(stops))
+            if stops[i]["name"] != "Byten" or stops[i]["name"] == "Promenad"
+        ]
+        number_change_overs = sum(
+            [
+                (1 if filtered_names[i] not in filtered_names[i - 1] else 0)
+                for i in range(len(filtered_names))
+            ]
+        )
+        return number_change_overs
 
     def next_available_trips_today(self) -> list[pd.DataFrame]:
         """Fetches all available trips today between the origin_id and destination_id
