@@ -106,4 +106,32 @@ class TripPlanner:
         """Fetches all available trips today between the origin_id and destination_id
         It returns a list of DataFrame objects, where each item corresponds to a trip
         """
-        # TODO: implement this method
+        today = datetime.now().date()
+        trips_today = []
+
+        for trip in self.trips:
+            leglist = trip.get("LegList").get("Leg")
+            df_legs = pd.DataFrame(leglist)
+            df_stops = pd.json_normalize(df_legs["Stops"].dropna(), "Stop", errors="ignore")
+            df_stops["time"] = df_stops["arrTime"].fillna(df_stops["depTime"])
+            df_stops["date"] = df_stops["arrDate"].fillna(df_stops["depDate"])
+
+            if df_stops["date"].iloc[0] == today.strftime("%Y-%m-%d"):
+                trips_today.append(
+                    df_stops[
+                        [
+                            "name",
+                            "extId",
+                            "lon",
+                            "lat",
+                            "depTime",
+                            "depDate",
+                            "arrTime",
+                            "arrDate",
+                            "time",
+                            "date",
+                        ]
+                    ]
+                )
+
+        return trips_today
