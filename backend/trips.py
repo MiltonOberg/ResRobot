@@ -115,26 +115,9 @@ class TripPlanner:
             df_stops = pd.json_normalize(
                 df_legs["Stops"].dropna(), "Stop", errors="ignore"
             )
-            df_stops["time"] = df_stops["arrTime"].fillna(df_stops["depTime"])
-            df_stops["date"] = df_stops["arrDate"].fillna(df_stops["depDate"])
-
-            if df_stops["date"].iloc[0] == today.strftime("%Y-%m-%d"):
-                trips_today.append(
-                    df_stops[
-                        [
-                            "name",
-                            "extId",
-                            "lon",
-                            "lat",
-                            "depTime",
-                            "depDate",
-                            "arrTime",
-                            "arrDate",
-                            "time",
-                            "date",
-                        ]
-                    ]
-                )
+            df_stops["depDate"] = pd.to_datetime(df_stops["depDate"]).dt.date
+            if df_stops["depDate"].iloc[0] == today:
+                trips_today.append(df_stops)
 
         return trips_today
 
