@@ -16,4 +16,3 @@ def reseplanerare():
         origin_id=StationIds.MALMO.value, destination_id=StationIds.UMEA.value
     )
     trip_map.display_map()
-    

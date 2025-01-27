@@ -52,7 +52,4 @@ class TripMap(Maps):
         m = folium.Map(location=[63.8258, 20.2630], zoom_start=6)  # Umeå koordinater
         folium.Marker([55.6050, 13.0038], tooltip="Malmö").add_to(m)  # Malmö koordinater
         st_folium(m, width=700, height=500)
-        
         st.components.v1.html(self._create_map()._repr_html_(), height=500)
-
-        
