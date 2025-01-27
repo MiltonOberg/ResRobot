@@ -1,7 +1,8 @@
 import streamlit as st
+from plot_maps import TripMap
+
 from backend.connect_to_api import ResRobot
 from backend.trips import TripPlanner
-from plot_maps import TripMap
 
 resrobot = ResRobot()
 
@@ -28,6 +29,7 @@ def reseplanerare():
                 )
                 st.markdown(f"Antal stopp: {len(trip_planner.next_available_trip())}")
                 st.markdown(f"Tid: {trip_planner.travel_time()}")
+                st.markdown(f"Antal byten: {trip_planner.changeovers()}")
 
         except Exception as err:
             st.markdown(f"Skriv in båda alternativen: {err}.")
