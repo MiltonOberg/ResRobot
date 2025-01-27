@@ -14,7 +14,7 @@ load_css(css_path)
 ()
 
 st.markdown('<h1 class="title-text">✨ Welcome to our Travel Robot Dashboard ✨</h1>', unsafe_allow_html=True)
-st.markdown('<h2 class="subheader-text">Your complete travel guide 🚆 🚋 🚌</h2>', unsafe_allow_html=True)   
+st.markdown('<h2 class="subheader-text">Your complete travel guide 🚆 🚋 🚌</h2>', unsafe_allow_html=True) 
 st.display_map()
 st.divider()
 
@@ -47,7 +47,7 @@ def layout():
     st.sidebar.title("🚀 Navigation")
     st.sidebar.radio("Go to", list(page_option.keys()))
 
-     
+
 # Skapar en connection till databasen
 def main():
     layout()  # Visa huvudlayouten
