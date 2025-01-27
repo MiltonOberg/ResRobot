@@ -14,8 +14,7 @@ load_css(css_path)
 ()
 
 st.markdown('<h1 class="title-text">✨ Welcome to our Travel Robot Dashboard ✨</h1>', unsafe_allow_html=True)
-st.markdown('<h2 class="subheader-text">Your complete travel guide 🚆 🚋 🚌</h2>', unsafe_allow_html=True)
-    
+st.markdown('<h2 class="subheader-text">Your complete travel guide 🚆 🚋 🚌</h2>', unsafe_allow_html=True)   
 st.display_map()
 st.divider()
 
@@ -54,7 +53,7 @@ def main():
     layout()  # Visa huvudlayouten
     page = st.sidebar.radio("# Sidor", page_option.keys())  # Lägg till sidopanel
     page_option[page]()  # Kör funktionen kopplad till den valda sidan
-    
+
 
 if __name__ == "__main__":
     main()  # Kör huvudfunktionen
