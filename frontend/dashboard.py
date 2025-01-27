@@ -1,5 +1,4 @@
 from frontend.pages_dict import page_option
-from frontend import plot_maps
 import streamlit as st
 import pathlib
 
