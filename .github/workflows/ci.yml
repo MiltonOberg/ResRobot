@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-    
+      
       - name: Setup python
         uses: actions/setup-python@v5.3.0
         with:
@@ -21,8 +21,9 @@ jobs:
       - name: Install dependencies
         run: |
             pip install --upgrade pip 
+            pip install setuptools==65.5.0  # Pinning setuptools version
             pip install -r requirements.txt
-    
+      
       - name: Run flake8
         run: flake8 --max-line-length=120 .
 
