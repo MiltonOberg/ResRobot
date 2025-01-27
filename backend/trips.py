@@ -112,7 +112,9 @@ class TripPlanner:
         for trip in self.trips:
             leglist = trip.get("LegList").get("Leg")
             df_legs = pd.DataFrame(leglist)
-            df_stops = pd.json_normalize(df_legs["Stops"].dropna(), "Stop", errors="ignore")
+            df_stops = pd.json_normalize(
+                df_legs["Stops"].dropna(), "Stop", errors="ignore"
+            )
             df_stops["time"] = df_stops["arrTime"].fillna(df_stops["depTime"])
             df_stops["date"] = df_stops["arrDate"].fillna(df_stops["depDate"])
 
@@ -135,3 +137,6 @@ class TripPlanner:
                 )
 
         return trips_today
+
+
+# Slut på trips.py

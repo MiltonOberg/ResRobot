@@ -1,15 +1,13 @@
 from frontend.pages_dict import page_option
-import streamlit as st 
-import plotly.express as px
-import pandas as pd
-import sqlite3
+import streamlit as st
 
 # CSS för att sätta bakgrundsbild
 st.markdown(
     """
     <style>
     .stApp {
-        background-image: url("https://www.saramellgren.com/wp-content/uploads/2023/11/saram0214_an_astronaut_playing_with_jellyfish_fa601ffe-ecda-4a23-9977-f958ecb739e4-1.png");
+        background-image: url(
+            "https://www.saramellgren.com/wp-content/uploads/2023/11/saram0214_an_astronaut_playing_with_jellyfish_fa601ffe-ecda-4a23-9977-f958ecb739e4-1.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -17,14 +15,16 @@ st.markdown(
     }
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
+
 
 def layout():
     st.title("Welcome to our Travel Robot Dashboard")
     st.markdown("Your complete travel guide")
     st.markdown("---")
-    
+
+
 # Skapar en connection till databasen
 def main():
     layout()  # Visa huvudlayouten
