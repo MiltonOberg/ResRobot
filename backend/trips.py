@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pandas as pd
 
@@ -120,6 +120,28 @@ class TripPlanner:
                 trips_today.append(df_stops)
 
         return trips_today
+
+    def choose_time_departure(self, hours: int = 0, minutes: int = 0):
+        time_format = "%H:%M:%S"
+        current_time = datetime.now()
+        current_time_delta = timedelta(
+            hours=current_time.hour, minutes=current_time.minute
+        )
+        trips_list = []
+        departure = timedelta(hours=hours, minutes=minutes)
+        for trip in self.trips:
+            legs = trip.get("LegList").get("Leg")
+            for leg in legs:
+                if "Stops" in leg:
+                    stops = leg["Stops"]["Stop"]
+                    dep_time = datetime.strptime(stops[0]["depTime"], time_format)
+                    dep_time_delta = timedelta(
+                        hours=int(dep_time.hour), minutes=int(dep_time.minute)
+                    )
+                    if dep_time_delta >= abs(departure + current_time_delta):
+                        trips_list.append(trip)
+
+        return trips_list
 
 
 # Slut på trips.py
