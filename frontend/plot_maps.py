@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
-from streamlit_folium import st_folium
+
 import folium
 import streamlit as st
+
 from backend.trips import TripPlanner
 
 
@@ -33,7 +34,7 @@ class TripMap(Maps):
     def _create_map(self):
         geographical_map = folium.Map(
             location=[self.next_trip["lat"].mean(), self.next_trip["lon"].mean()],
-            zoom_start=7,
+            zoom_start=5,
         )
 
         for _, row in self.next_trip.iterrows():
@@ -49,7 +50,4 @@ class TripMap(Maps):
         st.markdown(
             "Klicka på varje station för mer information. Detta är en exempelresa mellan Malmö och Umeå"
         )
-        m = folium.Map(location=[63.8258, 20.2630], zoom_start=6)  # Umeå koordinater
-        folium.Marker([55.6050, 13.0038], tooltip="Malmö").add_to(m)  # Malmö koordinater
-        st_folium(m, width=700, height=500)
         st.components.v1.html(self._create_map()._repr_html_(), height=500)
