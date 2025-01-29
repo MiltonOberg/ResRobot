@@ -1,6 +1,8 @@
-from frontend.pages_dict import page_option
-import streamlit as st
 import pathlib
+
+import streamlit as st
+
+from frontend.pages_dict import page_option
 
 
 def load_css(file_path):
@@ -13,14 +15,19 @@ css_path = pathlib.Path("frontend/styles.css")
 load_css(css_path)
 ()
 
-st.markdown('<h1 class="title-text">✨ Welcome to our Travel Robot Dashboard ✨</h1>', unsafe_allow_html=True)
-st.markdown('<h2 class="subheader-text">Your complete travel guide 🚆 🚋 🚌</h2>', unsafe_allow_html=True)
-st.display_map()
+st.markdown(
+    '<h1 class="title-text">✨ Welcome to our Travel Robot Dashboard ✨</h1>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<h2 class="subheader-text">Your complete travel guide 🚆 🚋 🚌</h2>',
+    unsafe_allow_html=True,
+)
 st.divider()
 
 # Styled Button
 st.button("Click here to plan your next trip!", key="pulse")
-st.page_link("Reseplanerare", "reseplanerare.py")
+
 
 # Text Input with Custom Font and Color
 st.header("Styled Text Input")
