@@ -13,9 +13,6 @@ class DepaturePlanner(TripPlanner):
         resrobot = ResRobot()
         self.trips = resrobot.trips(self.origin_id, self.destination)
 
-    start_location = input("Enter your location: ")
-    end_destination = input("Enter your destination: ")
-
     def access_id_from_location(self, location, start_location):
         url = f"https://api.resrobot.se/v2.1/location.name?input={location}&format=json&accessId={self.API_KEY}"
         start_location = start_location
@@ -31,15 +28,12 @@ class DepaturePlanner(TripPlanner):
         result = response.json()
         return result
 
-    def timetable_arrival(self, location_id, end_location):
-        url = f"https://api.resrobot.se/v2.1/arrivalBoard?id={location_id}&format=json&accessId={self.API_KEY}"
-        location_id = self.origin_id
-        end_location = end_location
-        location_id = self.destination_id
-        response = requests.get(url)
-        result = response.json()
-        return result
-
     def next_trip(self):
         next_trip = self.trips["Trip"]
         return next_trip
+
+    def Static_data(self):
+        url = f"https://opendata.samtrafiken.se/gtfs-sweden/sweden.zip?key={self.API_KEY}."
+        response = requests.get(url)
+        result = response.json()
+        return result
