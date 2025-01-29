@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 import folium
 import streamlit as st
+
 from backend.trips import TripPlanner
 
 
