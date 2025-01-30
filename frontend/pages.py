@@ -1,3 +1,7 @@
+# This file appears to be unused. Functionality is duplicated in dashboard_pages.
+# Keeping it temporarily commented for review.
+"""
+
 import streamlit as st
 from plot_maps import TripMap
 from utils.constants import StationIds
@@ -5,6 +9,7 @@ from utils.constants import StationIds
 
 def home():
     st.markdown("# Startsida")
+
 
 
 def reseplanerare():
@@ -16,7 +21,6 @@ def reseplanerare():
 
 # Removed hardcoded destination map.
 # The map is already generated based on user input.in travel_planner.py.
-"""
     trip_map = TripMap(
         origin_id=StationIds.MALMO.value, destination_id=StationIds.UMEA.value
     )
