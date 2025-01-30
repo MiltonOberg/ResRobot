@@ -1,8 +1,7 @@
 import pathlib
 
 import streamlit as st
-
-from frontend.pages_dict import page_option
+from pages_dict import page_option
 
 
 def load_css(file_path):
