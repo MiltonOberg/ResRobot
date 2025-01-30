@@ -14,9 +14,9 @@ def reseplanerare():
     )
 
 
-# Remove the hardcoded destination map
-# The map is now generated in travel_planner.py based on user input.
-""" 
+# Removed hardcoded destination map.
+# The map is already generated based on user input.in travel_planner.py.
+"""
     trip_map = TripMap(
         origin_id=StationIds.MALMO.value, destination_id=StationIds.UMEA.value
     )
