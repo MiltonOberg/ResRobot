@@ -4,7 +4,12 @@ from backend.trips import TripPlanner
 
 
 class TripDetails(TripPlanner):
-    """Used to get additional details about your chosen trip"""
+    """
+    Used to get additional details about your chosen trip
+    number of stops
+    how long the trip is
+    number of changeovers
+    """
 
     def __init__(self, origin_id: int, destination_id: int):
         super().__init__(origin_id, destination_id)
