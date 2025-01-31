@@ -25,7 +25,7 @@ class TripDetails(TripPlanner):
         datetime_depart = datetime.strptime(depart_time, time_format)
         datetime_arrival = datetime.strptime(arrival_time, time_format)
 
-        # adapt for 24h transition
+        # adapt for 24 hour transition
         if datetime_arrival < datetime_depart:
             datetime_arrival += timedelta(days=+1)
 
