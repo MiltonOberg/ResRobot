@@ -62,11 +62,66 @@ class Tables:
             )
         )
 
-        df = df[["Line", "Direction", "Departures in"]].reset_index(drop=True)
+        df_departures = df[["Line", "Direction", "Departures in"]].reset_index(
+            drop=True
+        )
+        return df_departures
+
+    def arrivals(self, location_id):
+        url = f"https://api.resrobot.se/v2.1/arrivalBoard?id={location_id}&format=json&accessId={self.API_KEY}"
+        response = requests.get(url)
+        data = response.json()
+        arrivals = data.get("Arrival", [])
+
+        arrival_list = []
+        for arr in arrivals:
+            line = arr["ProductAtStop"]["line"]
+            # Instead of 'direction', use 'origin' to indicate where it comes from
+            origin = arr["origin"]
+            stop = arr["stop"]
+            time = arr["time"]
+            date = arr["date"]
+            arrival_list.append(
+                {
+                    "Date": date,
+                    "Time": time,
+                    "Line": line,
+                    "Origin": origin,
+                    "Stop": stop,
+                }
+            )
+
+        df = pd.DataFrame(arrival_list)
+
+        if arrivals:
+            date_str = arrivals[0]["date"]
+        else:
+            date_str = "Unknown Date"
+
+        now = datetime.now()
+        df["Arrivals in"] = df["Time"].apply(
+            lambda t: (
+                datetime.strptime(f"{date_str} {t}", "%Y-%m-%d %H:%M:%S") - now
+            ).total_seconds()
+            // 60
+        )
+        df["Arrivals in"] = df["Arrivals in"].apply(
+            lambda m: (
+                "now"
+                if m == 0
+                else (
+                    f"{int(m // 60)} h {int(m % 60)} min"
+                    if m >= 60
+                    else f"{int(m)} min"
+                )
+            )
+        )
+
+        df = df[["Line", "Origin", "Arrivals in"]].reset_index(drop=True)
         return df
 
 
 if __name__ == "__main__":
     tables = Tables()
-    df = tables.departures(location_id="740000001")
+    df = tables.arrivals(location_id="740000001")
     print(df)
