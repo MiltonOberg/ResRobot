@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 import folium
 import streamlit as st
+
 from backend.trips import TripPlanner
 
 
@@ -45,8 +46,6 @@ class TripMap(Maps):
         return geographical_map
 
     def display_map(self):
-        st.markdown("## Karta över stationerna i din resa")
-        st.markdown(
-            "Klicka på varje station för mer information. Detta är en exempelresa mellan Malmö och Umeå"
-        )
-        st.components.v1.html(self._create_map()._repr_html_(), height=500)
+        st.markdown("## 🗺️ Karta över stationerna i din resa")
+        # st.markdown("Klicka på varje station för mer information. Detta är en exempelresa mellan Malmö och Umeå")
+        st.components.v1.html(self._create_map()._repr_html_(), height=500, width=700)

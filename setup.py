@@ -13,6 +13,8 @@ setup(
     author="YOUR_NAME",
     author_email="YOUR_EMAIL@mail.com",
     install_requires=["streamlit", "pandas", "folium", "requests"],
-    packages=find_packages(exclude=("test*", "explorations")),
+    packages=find_packages(
+        exclude=("test*", "explorations"), include=["backend", "frontend", "utils"]
+    ),
     entry_points={"console_scripts": ["dashboard = utils.run_dashboard:run_dashboard"]},
 )
