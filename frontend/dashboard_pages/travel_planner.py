@@ -1,8 +1,13 @@
 import streamlit as st
 from plot_maps import TripMap
 from backend.connect_to_api import ResRobot
+<<<<<<< HEAD
 from backend.trips import TripPlanner
 import pandas as pd
+=======
+from backend.trip_details import TripDetails
+from frontend.plot_maps import TripMap
+>>>>>>> ac1bd6d (lagt till en ny klass för att dela upp tripplanner. Nu finns en trip details, där små detaljer om valda resan går att hämta)
 
 resrobot = ResRobot()
 
@@ -28,9 +33,10 @@ def reseplanerare():
                 trip_map.display_map()
 
             with col2:
-                trip_planner = TripPlanner(
+                trip_details = TripDetails(
                     origin_id=origin_id, destination_id=destination_id
                 )
+<<<<<<< HEAD
 
             summary_data = {
                 "Kategori": ["Antal stopp", "Restid", "Antal byten"],
@@ -70,6 +76,11 @@ def reseplanerare():
             stops_df_display.index = stops_df_display.index + 1  # Add +1 to index
 
             st.dataframe(stops_df_display, use_container_width=True, height=500)
+=======
+                st.markdown(f"Tid: {trip_details.travel_time}")
+                st.markdown(f"Antal stopp: {trip_details.number_stops}")
+                st.markdown(f"Byten: {trip_details.changeovers}")
+>>>>>>> ac1bd6d (lagt till en ny klass för att dela upp tripplanner. Nu finns en trip details, där små detaljer om valda resan går att hämta)
 
         except Exception as err:
             st.markdown(f"Skriv in båda alternativen: {err}.")
