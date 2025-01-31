@@ -1,8 +1,10 @@
+import pandas as pd
 import streamlit as st
 from plot_maps import TripMap
+
 from backend.connect_to_api import ResRobot
+from backend.trip_details import TripDetails
 from backend.trips import TripPlanner
-import pandas as pd
 
 resrobot = ResRobot()
 
@@ -28,6 +30,9 @@ def reseplanerare():
                 trip_map.display_map()
 
             with col2:
+                trip_details = TripDetails(
+                    origin_id=origin_id, destination_id=destination_id
+                )
                 trip_planner = TripPlanner(
                     origin_id=origin_id, destination_id=destination_id
                 )
@@ -35,9 +40,9 @@ def reseplanerare():
             summary_data = {
                 "Kategori": ["Antal stopp", "Restid", "Antal byten"],
                 "Värde": [
-                    len(trip_planner.next_available_trip()),
-                    str(trip_planner.travel_time()),
-                    trip_planner.changeovers(),
+                    trip_details.number_stops,
+                    trip_details.travel_time,
+                    trip_details.changeovers,
                 ],
             }
 
