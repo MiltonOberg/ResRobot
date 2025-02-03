@@ -34,7 +34,7 @@
 }
 
 /* css för att lägga in våran logotyp med svart bakrund*/
-.stApp:before {
+.stApp.logo-black:before {
     content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund-1024x1024.png);
     position: fixed;
     top: 0;
@@ -46,7 +46,7 @@
 }
 
 /* css för att lägga in våran logotyp med transparant bakrund*/
-.stApp:before {
+.stApp.logo-transparent:before {
     content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/transparant-png-1024x1024.png);
     position: fixed;
     top: 0;
