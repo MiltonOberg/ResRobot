@@ -46,12 +46,6 @@ def reseplanerare():
                 ],
             }
 
-            """
-            print(trip_planner.next_available_trip().iloc[0]["depTime"],)
-            print(trip_planner.next_available_trip().iloc[-1]["arrTime"],
-            )
-            """
-
             summary_df = pd.DataFrame(summary_data, dtype=str)
 
             st.markdown(f"## 📍 Din resa: {depart_station} - {destination_station}.")
