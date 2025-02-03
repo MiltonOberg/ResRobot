@@ -15,7 +15,11 @@ def main():
     )  # Lägg till sidopanel
     page_option[page]()  # Kör funktionen kopplad till den valda sidan
 
+    # Skapa en tom plats för loggan längst ner
+    placeholder = st.sidebar.empty()
+    with placeholder:
+        logo()  # Kör loggan
+
 
 if __name__ == "__main__":
     main()  # Kör huvudfunktionen
-    logo()  # Kör loggan

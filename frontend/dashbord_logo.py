@@ -6,7 +6,7 @@ def logo():
         """
         <style>
         .stApp.logo-black:before {
-            content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund-1024x1024.png);
+            content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund.png);
             position: fixed;
             top: 0;
             left: 0;
@@ -23,4 +23,3 @@ def logo():
 
 if __name__ == "__main__":
     logo()
-    st.sidebar.title("🚀 Navigation")
