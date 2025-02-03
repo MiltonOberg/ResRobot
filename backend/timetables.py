@@ -11,6 +11,44 @@ load_dotenv()
 class Tables:
     API_KEY = os.getenv("API_KEY")
 
+    def access_id_from_location(self, location):
+        url = f"https://api.resrobot.se/v2.1/location.name?input={location}&format=json&accessId={self.API_KEY}"
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching location data: {e}")
+            return []
+
+        result = response.json()
+        location_options = []
+
+        stops = result.get("stopLocationOrCoordLocation", [])
+        for stop in stops:
+            for key, stop_data in stop.items():
+                name = stop_data.get("name")
+                extId = stop_data.get("extId")
+                if name and extId:
+                    location_options.append({"name": name, "extId": extId})
+
+        return location_options
+
+    def return_id(self, location):
+        url = f"https://api.resrobot.se/v2.1/location.name?input={location}&format=json&accessId={self.API_KEY}"
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            result = response.json()
+            stops = result.get("stopLocationOrCoordLocation", [])
+
+            if stops:
+                stop_data = next(iter(stops[0].values()))
+                return stop_data.get("extId", None)
+            return None
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching location ID: {e}")
+            return None
+
     def departures(self, location_id):
         url = f"https://api.resrobot.se/v2.1/departureBoard?id={location_id}&format=json&accessId={self.API_KEY}"
         response = requests.get(url)
@@ -76,7 +114,6 @@ class Tables:
         arrival_list = []
         for arr in arrivals:
             line = arr["ProductAtStop"]["line"]
-            # Instead of 'direction', use 'origin' to indicate where it comes from
             origin = arr["origin"]
             stop = arr["stop"]
             time = arr["time"]
@@ -99,13 +136,13 @@ class Tables:
             date_str = "Unknown Date"
 
         now = datetime.now()
-        df["Arrivals in"] = df["Time"].apply(
+        df["Arrives in"] = df["Time"].apply(
             lambda t: (
                 datetime.strptime(f"{date_str} {t}", "%Y-%m-%d %H:%M:%S") - now
             ).total_seconds()
             // 60
         )
-        df["Arrivals in"] = df["Arrivals in"].apply(
+        df["Arrives in"] = df["Arrives in"].apply(
             lambda m: (
                 "now"
                 if m == 0
@@ -117,7 +154,7 @@ class Tables:
             )
         )
 
-        df = df[["Line", "Origin", "Arrivals in"]].reset_index(drop=True)
+        df = df[["Line", "Origin", "Arrives in"]].reset_index(drop=True)
         return df
 
 
