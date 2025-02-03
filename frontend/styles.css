@@ -33,6 +33,18 @@
     text-shadow: 2px 2px 4px black;
 }
 
+.black-background {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.stTextInput > div > input {
+    background-color: black;
+    color: white;
+}
+
 
 .st-key-green button {
     background-color: blue;
