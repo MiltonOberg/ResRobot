@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from backend.trips import TripPlanner
 
@@ -24,24 +24,22 @@ class TripDetails(TripPlanner):
         # from string to time object to get the diffrence
         datetime_depart = datetime.strptime(depart_time, time_format)
         datetime_arrival = datetime.strptime(arrival_time, time_format)
+
+        # adapt for 24 hour transition
+        if datetime_arrival < datetime_depart:
+            datetime_arrival += timedelta(days=+1)
+
         # diffrence
         travel_time = datetime_arrival - datetime_depart
 
-        time = []
-        for item in str(travel_time).split(":"):
-            if "day" in item:
-                time.append(int(item.split("day, ")[0]) * -1)
-                time.append(item.split("day, ")[-1])
-            else:
-                time.append(item)
-        # remove seconds
-        time.remove(time[-1])
+        total_seconds = travel_time.total_seconds()
+        days = int(total_seconds // 86400)
+        hours = int((total_seconds % 86400) // 3600)
+        minutes = int((total_seconds % 3600) // 60)
 
-        return (
-            "{} timmar {} minuter".format(*time)
-            if len(time) == 2
-            else "{} dag {} timmar {} minuter".format(*time)
-        )
+        if days > 0:
+            return f"{days} dag {hours} timmar {minutes} minuter"
+        return f"{hours} timmar {minutes} minuter"
 
     def _changeovers(self):
         next_trip = self.trips[0]

@@ -1,12 +1,12 @@
 /* Text color override */ 
-#styled-text-input, #styled-text-area, #styled-radio-buttons, #styled-markdown, #startsida, .st-emotion-cache-89jlt8.e121c1cl0 p, .st-emotion-cache-1104ytp.e121c1cl0 p, .st-emotion-cache-1lvxfs7.e121c1cl2 h2, .title-text{
+#styled-text-input, #styled-text-area, #styled-radio-buttons, #styled-markdown, #startsida, .st-emotion-cache-89jlt8.e121c1cl0 p, .st-emotion-cache-1104ytp.e121c1cl0 p, .st-emotion-cache-1lvxfs7.e121c1cl2 h2, .title-text, .st-emotion-cache-1lvxfs7.e121c1cl2 h1{
     color: white !important;
     /* Double shadow to highlight the text more*/
     text-shadow: -2px -2px 2px rgba(255, 255, 255, 0.6), 
              2px 2px 4px rgba(0, 0, 0, 0.75) !important;
 }
 
-/* Class p tags text size and shadow */
+/* Class p tags text size */
 .st-emotion-cache-89jlt8.e121c1cl0 p, .st-emotion-cache-1104ytp.e121c1cl0 p, .st-emotion-cache-1hyd1ho.e121c1cl0 p{
     font-size: 20px;
 }
