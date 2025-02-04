@@ -21,17 +21,23 @@
     background-attachment: fixed;
 }
 
-.title-text {
-    font-size: 2em;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 4px black;
-}
+/* CSS för att skugga .subheader-text */
 .subheader-text {
     font-size: 1.5em;
     color: white;
-    text-shadow: 2px 2px 4px black;
+    text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
 }
+
+
+/* CSS för att skugga title texten */
+.title-text {
+    font-size: 2em;
+    color: white;
+    text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+
+/* CSS för att sätta en svart bakrund på texten */
 .black-background {
     background-color: black;
     color: white;
