@@ -54,7 +54,6 @@
     z-index: 1000;
     margin: 10px;
 }
-
 /* css för att lägga in våran logotyp med transparant bakrund*/
 .stApp.logo-transparent:before {
     content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/transparant-png-1.png);
@@ -65,7 +64,6 @@
     height: 100px;
     z-index: 1000;
     margin: 10px;
-
 }
 
 .st-key-green button {
