@@ -2,7 +2,7 @@ import streamlit as st
 from plot_maps import TripMap
 
 from backend.connect_to_api import ResRobot
-from frontend.trip_planer_frontend import TripPlannerFrontEnd
+from frontend.trip_planer_visuals import TripPlannerFrontEnd
 
 resrobot = ResRobot()
 
