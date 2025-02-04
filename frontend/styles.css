@@ -1,16 +1,69 @@
-  
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html, body {
+    font-family: 'Inter', sans-serif !important;
+    line-height: 1.6; 
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+}
+
+p {
+    font-weight: 400; 
+}
+
 /* Text color override */ 
-#styled-text-input, #styled-text-area, #styled-radio-buttons, #styled-markdown, #startsida, .st-emotion-cache-89jlt8.e121c1cl0 p, .st-emotion-cache-1104ytp.e121c1cl0 p, .st-emotion-cache-1lvxfs7.e121c1cl2 h2, .title-text, .st-emotion-cache-1lvxfs7.e121c1cl2 h1{
+.st-emotion-cache-1lvxfs7.e121c1cl2,.st-emotion-cache-1hyd1ho.e121c1cl0,#styled-text-input, #styled-text-area, #styled-radio-buttons, #styled-markdown, #startsida, .st-emotion-cache-89jlt8.e121c1cl0 p, .st-emotion-cache-1104ytp.e121c1cl0 p, .st-emotion-cache-1lvxfs7.e121c1cl2 h2, .title-text, .st-emotion-cache-1lvxfs7.e121c1cl2 h1{
     color: white !important;
     /* Double shadow to highlight the text more*/
-    text-shadow: -2px -2px 2px rgba(255, 255, 255, 0.6), 
-             2px 2px 4px rgba(0, 0, 0, 0.75) !important;
 }
 
 /* Class p tags text size */
 .st-emotion-cache-89jlt8.e121c1cl0 p, .st-emotion-cache-1104ytp.e121c1cl0 p, .st-emotion-cache-1hyd1ho.e121c1cl0 p{
     font-size: 20px;
 }
+
+
+
+.planner-container {
+    background-color: #1e1e1e; /* Svart bakgrund */
+    border-radius: 10px; /* Rundade hörn */
+    width: 125%; /* Sätter en maxbredd */
+    height: 4000px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Skugga */
+    position:absolute;
+    top: 50%; /* Flytta till mitten vertikalt */
+    left: 50%; /* Flytta till mitten horisontellt */
+    transform: translate(-50%, -50%); /* Justera för exakt mittpunkt */
+}
+
+.timetable-container {
+    background-color: #1e1e1e; /* Svart bakgrund */
+    border-radius: 10px; /* Rundade hörn */
+    width: 125%; /* Sätter en maxbredd */
+    height: 2500px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Skugga */
+    position:absolute;
+    top: 50%; /* Flytta till mitten vertikalt */
+    left: 50%; /* Flytta till mitten horisontellt */
+    transform: translate(-50%, -50%); /* Justera för exakt mittpunkt */
+}
+
+.start-container {
+    background-color: #1e1e1e; /* Svart bakgrund */
+    border-radius: 10px; /* Rundade hörn */
+    width: 125%; /* Sätter en maxbredd */
+    height: 1686px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Skugga */
+    position:absolute;
+    top: 50%; /* Flytta till mitten vertikalt */
+    left: 50%; /* Flytta till mitten horisontellt */
+    transform: translate(-50%, -50%); /* Justera för exakt mittpunkt */
+}
+
 
 /* CSS för att sätta bakgrundsbild */
 .stApp {
