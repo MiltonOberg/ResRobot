@@ -57,7 +57,7 @@ class Tables:
 
         departure_list = []
         for dep in departures:
-            line = dep["ProductAtStop"]["line"]
+            line = dep["ProductAtStop"]["name"]
             direction = dep["direction"]
             stop = dep["stop"]
             time = dep["time"]
@@ -113,7 +113,7 @@ class Tables:
 
         arrival_list = []
         for arr in arrivals:
-            line = arr["ProductAtStop"]["line"]
+            line = arr["ProductAtStop"]["name"]
             origin = arr["origin"]
             stop = arr["stop"]
             time = arr["time"]
