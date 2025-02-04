@@ -2,7 +2,7 @@ import streamlit as st
 from plot_maps import TripMap
 
 from backend.connect_to_api import ResRobot
-from backend.trip_details import TripDetails
+from frontend.trip_planer_frontend import TripPlannerFrontEnd
 
 resrobot = ResRobot()
 
@@ -24,19 +24,17 @@ def reseplanerare():
             trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
             trip_map.display_map()
 
-            trip_details = TripDetails(
-                origin_id=origin_id, destination_id=destination_id
-            )
+            trip_visuals = TripPlannerFrontEnd(origin_id, destination_id)
 
             st.markdown(f"## 📍 Din resa: {depart_station} - {destination_station}.")
             st.dataframe(
-                trip_details.summary_df(), use_container_width=True, hide_index=True
+                trip_visuals.summary_df(), use_container_width=True, hide_index=True
             )
 
             st.markdown("## 🛑 Lista över alla stopp")
 
             st.dataframe(
-                trip_details.get_trip_table(), use_container_width=True, height=500
+                trip_visuals.get_trip_table(), use_container_width=True, height=500
             )
 
         except Exception as err:
