@@ -1,5 +1,5 @@
 import streamlit as st
-from dashbord_logo import logo
+from dashbord_logo import Dashboard
 from pages_dict import page_option
 
 from utils.load_css import load_css
@@ -15,10 +15,11 @@ def main():
     )  # Lägg till sidopanel
     page_option[page]()  # Kör funktionen kopplad till den valda sidan
 
-    # Skapa en tom plats för loggan längst ner
-    placeholder = st.sidebar.empty()
-    with placeholder:
-        logo()  # Kör loggan
+    # Skapa en plats för loggan längst ner på sidbar
+    st.sidebar.markdown("---")  # Separator
+    dashboard = Dashboard()
+    with st.sidebar:
+        dashboard.logo()  # Ensure the logo is placed in the sidebar
 
 
 if __name__ == "__main__":

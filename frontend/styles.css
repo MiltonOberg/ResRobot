@@ -35,19 +35,19 @@
 
 /* css för att lägga in våran logotyp med svart bakrund*/
 .stApp.logo-black:before {
-    content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund-1024x1024.png);
+    content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund-1.png);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100px;
-    height: 100px;
+    width: 30px; /* Adjusted width to fit in a sidebar */
+    height: auto;
     z-index: 1000;
     margin: 10px;
 }
 
 /* css för att lägga in våran logotyp med transparant bakrund*/
 .stApp.logo-transparent:before {
-    content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/transparant-png-1024x1024.png);
+    content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/transparant-png-1.png);
     position: fixed;
     top: 0;
     left: 0;

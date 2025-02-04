@@ -1,25 +1,17 @@
 import streamlit as st
 
 
-def logo():
-    st.markdown(
-        """
-        <style>
-        .stApp.logo-black:before {
-            content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund.png);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
-            z-index: 1000;
-            margin: 10px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+class Dashboard:
+    def __init__(self):
+        pass
+
+    def logo(self):
+        st.image(
+            "https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund-1.png",
+            width=300,  # Adjusted width to fit in a sidebar
+        )
 
 
 if __name__ == "__main__":
-    logo()
+    dashboard = Dashboard()
+    dashboard.logo()
