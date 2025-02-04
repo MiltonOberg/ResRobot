@@ -16,7 +16,7 @@ def reseplanerare():
     depart_station = st.text_input("Vilken station vill du åka ifrån?: ")
     destination_station = st.text_input("Vart vill du åka?: ")
 
-    if depart_station and depart_station:
+    if depart_station and destination_station:
         try:
             origin_id = resrobot.return_id(depart_station)
             destination_id = resrobot.return_id(destination_station)
