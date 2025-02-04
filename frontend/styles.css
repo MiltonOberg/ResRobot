@@ -1,3 +1,4 @@
+  
 /* Text color override */ 
 #styled-text-input, #styled-text-area, #styled-radio-buttons, #styled-markdown, #startsida, .st-emotion-cache-89jlt8.e121c1cl0 p, .st-emotion-cache-1104ytp.e121c1cl0 p, .st-emotion-cache-1lvxfs7.e121c1cl2 h2, .title-text, .st-emotion-cache-1lvxfs7.e121c1cl2 h1{
     color: white !important;
@@ -31,7 +32,6 @@
     color: white;
     text-shadow: 2px 2px 4px black;
 }
-
 .black-background {
     background-color: black;
     color: white;
@@ -42,6 +42,30 @@
 .stTextInput > div > input {
     background-color: black;
     color: white;
+
+/* css för att lägga in våran logotyp med svart bakrund*/
+.stApp.logo-black:before {
+    content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund-1.png);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px; /* Adjusted width to fit in a sidebar */
+    height: auto;
+    z-index: 1000;
+    margin: 10px;
+}
+
+/* css för att lägga in våran logotyp med transparant bakrund*/
+.stApp.logo-transparent:before {
+    content: url(https://www.saramellgren.com/wp-content/uploads/2025/02/transparant-png-1.png);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    z-index: 1000;
+    margin: 10px;
+
 }
 
 .st-key-green button {
@@ -127,4 +151,4 @@
     color: #DA70D6;
     font-size: 34px;
 }
-
+}
