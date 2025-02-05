@@ -23,7 +23,7 @@ def reseplanerare():
             destination_id = resrobot.return_id(destination_station)
 
         except Exception:
-            st.error(f"Kunde inte hämta id. {origin_id, destination_id}")
+            st.error("Kunde inte hämta id.")
 
     trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
     trip_map.display_map()
