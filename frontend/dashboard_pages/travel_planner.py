@@ -15,15 +15,15 @@ def reseplanerare():
     try:
         depart_station = st.text_input("Vilken station vill du åka ifrån?: ")
         destination_station = st.text_input("Vart vill du åka?: ")
-    except Exception as err:
-        st.error(f"Skriv in båda alternativen: {err}.")
+    except Exception:
+        st.error("Välj din avgångsstation och destination")
     if destination_station and depart_station:
         try:
             origin_id = resrobot.return_id(depart_station)
             destination_id = resrobot.return_id(destination_station)
 
-        except Exception as err:
-            st.error(f"Kunde inte hämta id: {err}")
+        except Exception:
+            st.error(f"Kunde inte hämta id. {origin_id, destination_id}")
 
     trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
     trip_map.display_map()
