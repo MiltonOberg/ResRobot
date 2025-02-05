@@ -16,32 +16,31 @@ def reseplanerare():
     depart_station = st.text_input("Vilken station vill du åka ifrån?: ")
     destination_station = st.text_input("Vart vill du åka?: ")
     if destination_station and depart_station:
-        if destination_station and depart_station:
-            origin_id = resrobot.return_id(depart_station)
-            destination_id = resrobot.return_id(destination_station)
+        origin_id = resrobot.return_id(depart_station)
+        destination_id = resrobot.return_id(destination_station)
+
+        if origin_id and destination_id:
+            trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
+            trip_map.display_map()
+
+            trip_visuals = TripPlannerFrontEnd(origin_id, destination_id)
+
+            st.markdown(f"## 📍 Din resa: {depart_station} - {destination_station}.")
+            st.dataframe(
+                trip_visuals.summary_df(),
+                use_container_width=True,
+                hide_index=True,
+            )
+
+            st.markdown("## 🛑 Lista över alla stopp")
+
+            st.dataframe(
+                trip_visuals.get_trip_table(),
+                use_container_width=True,
+                height=500,
+            )
         else:
             st.error("Kunde inte hämta id.")
-
-            if origin_id and destination_id:
-                trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
-                trip_map.display_map()
-
-                trip_visuals = TripPlannerFrontEnd(origin_id, destination_id)
-
-                st.markdown(f"## 📍 Din resa: {depart_station} - {destination_station}.")
-                st.dataframe(
-                    trip_visuals.summary_df(),
-                    use_container_width=True,
-                    hide_index=True,
-                )
-
-                st.markdown("## 🛑 Lista över alla stopp")
-
-                st.dataframe(
-                    trip_visuals.get_trip_table(),
-                    use_container_width=True,
-                    height=500,
-                )
 
     else:
         st.error("Välj din avgångsstation och destination")
