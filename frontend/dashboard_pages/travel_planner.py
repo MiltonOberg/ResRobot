@@ -12,14 +12,16 @@ def reseplanerare():
     st.markdown(
         "Den här dashboarden syftar till att både utforska data för olika platser, men ska även fungera som en reseplanerare där du får välja och planera din resa."  # noqa: E501
     )
+    try:
+        depart_station = st.text_input("Vilken station vill du åka ifrån?: ")
+        destination_station = st.text_input("Vart vill du åka?: ")
+        if depart_station and destination_station:
+            try:
+                origin_id = resrobot.return_id(depart_station)
+                destination_id = resrobot.return_id(destination_station)
+            except Exception as err:
+                st.markdown(f"Kunde inte hämta ID: {err}")
 
-    depart_station = st.text_input("Vilken station vill du åka ifrån?: ")
-    destination_station = st.text_input("Vart vill du åka?: ")
-    if destination_station and depart_station:
-        origin_id = resrobot.return_id(depart_station)
-        destination_id = resrobot.return_id(destination_station)
-
-        if origin_id and destination_id:
             trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
             trip_map.display_map()
 
@@ -27,20 +29,14 @@ def reseplanerare():
 
             st.markdown(f"## 📍 Din resa: {depart_station} - {destination_station}.")
             st.dataframe(
-                trip_visuals.summary_df(),
-                use_container_width=True,
-                hide_index=True,
+                trip_visuals.summary_df(), use_container_width=True, hide_index=True
             )
 
             st.markdown("## 🛑 Lista över alla stopp")
 
             st.dataframe(
-                trip_visuals.get_trip_table(),
-                use_container_width=True,
-                height=500,
+                trip_visuals.get_trip_table(), use_container_width=True, height=500
             )
-        else:
-            st.error("Kunde inte hämta id.")
 
-    else:
-        st.error("Välj din avgångsstation och destination")
+    except Exception as err:
+        st.markdown(f"Skriv in båda alternativen: {err}.")
