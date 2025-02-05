@@ -18,8 +18,12 @@ def reseplanerare():
 
     if depart_station and destination_station:
         try:
-            origin_id = resrobot.return_id(depart_station)
-            destination_id = resrobot.return_id(destination_station)
+            try:
+                origin_id = resrobot.return_id(depart_station)
+                destination_id = resrobot.return_id(destination_station)
+
+            except Exception as err:
+                st.error(f"Kunde inte hämta id: {err}")
 
             trip_map = TripMap(origin_id=origin_id, destination_id=destination_id)
             trip_map.display_map()
@@ -28,14 +32,18 @@ def reseplanerare():
 
             st.markdown(f"## 📍 Din resa: {depart_station} - {destination_station}.")
             st.dataframe(
-                trip_visuals.summary_df(), use_container_width=True, hide_index=True
+                trip_visuals.summary_df(),
+                use_container_width=True,
+                hide_index=True,
             )
 
             st.markdown("## 🛑 Lista över alla stopp")
 
             st.dataframe(
-                trip_visuals.get_trip_table(), use_container_width=True, height=500
+                trip_visuals.get_trip_table(),
+                use_container_width=True,
+                height=500,
             )
 
         except Exception as err:
-            st.markdown(f"Skriv in båda alternativen: {err}.")
+            st.error(f"Skriv in båda alternativen: {err}.")
