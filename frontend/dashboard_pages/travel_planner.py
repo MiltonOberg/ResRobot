@@ -9,7 +9,7 @@ resrobot = ResRobot()
 
 def reseplanerare():
     st.markdown('<div class="planner-container">', unsafe_allow_html=True)
-    st.markdown("# Reseplanerare")
+    st.markdown("# ✨Reseplanerare✨")
     st.markdown(
         "Den här dashboarden syftar till att både utforska data för olika platser, men ska även fungera som en reseplanerare där du får välja och planera din resa."  # noqa: E501
     )

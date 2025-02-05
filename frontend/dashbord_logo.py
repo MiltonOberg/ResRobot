@@ -6,8 +6,9 @@ class Dashboard:
         pass
 
     def logo(self):
+        logo_path = "frontend/assets/logo_no_background.png"
         st.image(
-            "https://www.saramellgren.com/wp-content/uploads/2025/02/svart-bakrund-1.png",
+            logo_path,
             width=300,  # Adjusted width to fit in a sidebar
         )
 
