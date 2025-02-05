@@ -36,7 +36,10 @@ class ResRobot:
                 print(f"{stop_data['name']:<50} {stop_data['extId']}")
 
     def return_id(self, location):
-        url = f"https://api.resrobot.se/v2.1/location.name?input={location}&format=json&accessId={self.API_KEY}"
+        try:
+            url = f"https://api.resrobot.se/v2.1/location.name?input={location}&format=json&accessId={self.API_KEY}"
+        except Exception as err:
+            return f"{err}"
         response = requests.get(url)
         result = response.json()
         stops = result.get("stopLocationOrCoordLocation")
