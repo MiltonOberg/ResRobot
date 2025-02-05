@@ -7,6 +7,7 @@ load_dotenv()
 
 
 def timetables():
+    st.markdown('<div class="timetable-container">', unsafe_allow_html=True)
     st.title("Timetables")
 
     # Get location
@@ -45,3 +46,5 @@ def timetables():
             st.error("No matching locations found. Please check the location name.")
     else:
         st.warning("Please enter a location name to proceed.")
+
+    st.markdown("</div>", unsafe_allow_html=True)
