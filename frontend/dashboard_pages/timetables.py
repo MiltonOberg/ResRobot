@@ -8,7 +8,7 @@ load_dotenv()
 
 def timetables():
     st.markdown('<div class="timetable-container">', unsafe_allow_html=True)
-    st.title("Timetables")
+    st.title("✨Timetables✨")
 
     # Get location
     location_name = st.text_input("Enter a city:", "")
